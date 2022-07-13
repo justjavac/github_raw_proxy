@@ -4,16 +4,14 @@ async function handleRequest(request: Request) {
   const { pathname } = new URL(request.url);
 
   if (pathname === "/") {
-    const usage = await Deno.readFile("README.md");
-    return new Response(usage, {
+    return new Response(await Deno.readFile("README.md"), {
       headers: {
         "content-type": "text/plain",
       },
     });
   }
 
-  const url = new URL(pathname, "https://raw.githubusercontent.com");
-  return fetch(url);
+  return fetch(new URL(pathname, "https://raw.githubusercontent.com"));
 }
 
 serve(handleRequest);
