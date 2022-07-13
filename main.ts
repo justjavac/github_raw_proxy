@@ -4,9 +4,13 @@ async function handleRequest(request: Request) {
   const { pathname } = new URL(request.url);
 
   if (pathname === "/") {
-    return new Response(await Deno.readFile("README.md"), {
+    return new Response(await Deno.readFile("README.md"));
+  }
+
+  if (pathname === "/favicon.ico") {
+    return new Response(await Deno.readFile("favicon.ico"), {
       headers: {
-        "content-type": "text/plain",
+        "content-type": "image/x-icon",
       },
     });
   }
