@@ -1,8 +1,6 @@
 import { serve } from "https://deno.land/std@0.148.0/http/server.ts";
 
 async function handleRequest(request: Request) {
-  console.log(request);
-
   const { pathname } = new URL(request.url);
 
   if (pathname === "/") {
