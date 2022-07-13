@@ -12,8 +12,7 @@ async function handleRequest(request: Request) {
     });
   }
 
-  const url = new URL(pathname, "https://raw.githubusercontent.com");
-  return fetch(url);
+  return fetch(new URL(pathname, "https://raw.githubusercontent.com"));
 }
 
 serve(handleRequest);
